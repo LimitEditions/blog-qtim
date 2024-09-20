@@ -1,5 +1,6 @@
 <template>
-    <section class="articles-container">
+  <section class="container">
+    <div class="second-container">
       <h1>Articles</h1>
       <div class="articles-grid">
         <div v-for="post in paginatedPosts" :key="post.id" class="article-card">
@@ -9,24 +10,27 @@
         </div>
       </div>
       <div class="pagination">
-        <button v-for="page in visiblePages" :key="page" @click="goToPage(page)">
+        <button v-for="page in visiblePages" :key="page" @click="goToPage(page)"
+          :class="{'pagination__btn_active': page === currentPage, 'pagination__btn': page !== currentPage}">
           {{ page }}
         </button>
         <button @click="nextPage">></button>
       </div>
-    </section>
-  </template>
+    </div>
+  </section>
+</template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 
 interface Post { id: string; image: string; title: string; }
 
-const { data: posts, error } = await useFetch<Post[]>('https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts');
+const { data: posts } = await useFetch<Post[]>('https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts');
 
 const currentPage = ref(1);
 const postsPerPage = 8;
 const maxPageButtons = 5;
+let isCurrentPage = false;
 
 const paginatedPosts = computed(() => {
   if (!posts.value) return [];
@@ -51,6 +55,7 @@ const visiblePages = computed(() => {
 const goToPage = (page: number) => {
   if (page >= 1 && page <= totalPages.value) {
     currentPage.value = page;
+    isCurrentPage = true;
   }
 };
 
@@ -66,14 +71,6 @@ const onHover = () => {
 </script>
 
 <style scoped lang="scss">
-.second-container {
-  padding: 20px;
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-}
-
 .articles-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -81,6 +78,7 @@ const onHover = () => {
 
   .article {
     text-align: center;
+
     img {
       width: 100%;
       height: auto;
@@ -90,17 +88,19 @@ const onHover = () => {
 
 .pagination {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   margin-top: 20px;
 
-  button {
-    margin: 0 5px;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    &.active {
-      background-color: #000;
-      color: #fff;
+  &__btn {
+    color: $primary-color;
+    background-color: grey;
+    width: 35px;
+    height: 35px;
+
+    &_active {
+      background-color: $primary-color;
+      color: #f3f3f3;
+      cursor: pointer;
     }
   }
 }

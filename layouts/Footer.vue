@@ -138,7 +138,7 @@ export default {};
       width: 358px;
       height: 149px;
       border: none;
-      border-radius: 50% 50% 0 0 / 100% 100% 0 0; /* угол состоит из половины ширины (50% от 10em = 10em : 2 = 5em) и всей высоты (100% от 5em = 5em) */
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
       background: $primary-color;
       color: #f3f3f3;
       font-size: 32px;
