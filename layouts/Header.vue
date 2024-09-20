@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <header class="container header">
     <img :src="logo" alt="logo" />
     <div class="nav">
       <nav class="nav-menu">
@@ -11,7 +11,7 @@
         <button class="start">Let’s work</button>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script setup>
@@ -20,13 +20,8 @@ import logo from "@/assets/img/logo (1).png";
 </script>
 
 <style lang="scss" scoped>
-.container {
-  min-width: $container;
+.header {
   height: 121px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 821px;
 }
 
 .nav {
@@ -39,6 +34,8 @@ import logo from "@/assets/img/logo (1).png";
   justify-content: center;
   align-items: center;
   gap: 58px;
+font-size: 20px;
+line-height: 20px;
 }
 
 .lang {
