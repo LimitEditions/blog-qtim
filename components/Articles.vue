@@ -162,7 +162,7 @@ const nextPage = () => {
 
   &__btn {
     color: $primary-color;
-    background-color: grey;
+    background-color: #F3F3F3;
     width: 44px;
     height: 44px;
     border-radius: 12px;
