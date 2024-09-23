@@ -1,13 +1,13 @@
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  components: true,
   devtools: { enabled: true },
   css: [
     '@/assets/styles/main.scss',
-    // '@/assets/styles/variables.scss',
     'normalize.css',
   ],
   typescript: {
     strict: true,
+    shim: false
   },
   vite: {
     css: {

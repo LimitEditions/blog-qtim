@@ -1,6 +1,6 @@
 <template>
   <header class="container header">
-    <img :src="logo" alt="logo" />
+    <NuxtLink to="/"><img :src="logo" alt="logo"></NuxtLink>
     <div class="nav">
       <nav class="nav-menu">
         <a href="#">Works</a>
